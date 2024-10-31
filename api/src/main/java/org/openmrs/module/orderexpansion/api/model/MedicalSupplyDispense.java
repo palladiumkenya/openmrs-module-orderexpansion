@@ -15,8 +15,11 @@ import java.util.Date;
 
 import org.openmrs.BaseFormRecordableOpenmrsData;
 import org.openmrs.Concept;
+import org.openmrs.Encounter;
 import org.openmrs.Location;
+import org.openmrs.Order;
 import org.openmrs.Patient;
+import org.openmrs.User;
 
 @Entity
 @Table(name = "medical_supply_dispense")
@@ -42,9 +45,13 @@ public class MedicalSupplyDispense extends BaseFormRecordableOpenmrsData {
 	@JoinColumn(name = "patient_id")
 	private Patient patient;
 	
-	// @ManyToOne
-	// @JoinColumn(name = "medical_supply_order_id")
-	// private MedicalSupplyOrder medicalSupplyOrder;
+	@ManyToOne
+	@JoinColumn(name = "encounter_id")
+	private Encounter encounter;
+	
+	@ManyToOne
+	@JoinColumn(name = "medical_supply_order_id")
+	private Order medicalSupplyOrder;
 	
 	@ManyToOne
 	@JoinColumn(name = "concept")
@@ -53,8 +60,9 @@ public class MedicalSupplyDispense extends BaseFormRecordableOpenmrsData {
 	@Column(name = "date_dispensed")
 	private Date dateDispensed;
 	
-	@Column(name = "dispenser")
-	private Integer dispenser;
+	@ManyToOne
+	@JoinColumn(name = "dispenser")
+	private User dispenser;
 	
 	@Column(name = "quantity")
 	private Integer quantity;
@@ -69,9 +77,6 @@ public class MedicalSupplyDispense extends BaseFormRecordableOpenmrsData {
 	@ManyToOne
 	@JoinColumn(name = "status_reason")
 	private Concept statusReason;
-	
-	// TODO
-	// Add encounter column
 	
 	@ManyToOne
 	@JoinColumn(name = "location_id")
@@ -93,13 +98,21 @@ public class MedicalSupplyDispense extends BaseFormRecordableOpenmrsData {
 		this.patient = patient;
 	}
 	
-	// public MedicalSupplyOrder getMedicalSupplyOrder() {
-	// return medicalSupplyOrder;
-	// }
+	public Encounter getEncounter() {
+		return encounter;
+	}
 	
-	// public void setMedicalSupplyOrder(MedicalSupplyOrder medicalSupplyOrder) {
-	// this.medicalSupplyOrder = medicalSupplyOrder;
-	// }
+	public void setEncounter(Encounter encounter) {
+		this.encounter = encounter;
+	}
+	
+	public Order getMedicalSupplyOrder() {
+		return medicalSupplyOrder;
+	}
+	
+	public void setMedicalSupplyOrder(Order medicalSupplyOrder) {
+		this.medicalSupplyOrder = medicalSupplyOrder;
+	}
 	
 	public Concept getConcept() {
 		return concept;
@@ -157,11 +170,11 @@ public class MedicalSupplyDispense extends BaseFormRecordableOpenmrsData {
 		this.quantityUnits = quantityUnits;
 	}
 	
-	public Integer getDispenser() {
+	public User getDispenser() {
 		return this.dispenser;
 	}
 	
-	public void setDispenser(Integer dispenser) {
+	public void setDispenser(User dispenser) {
 		this.dispenser = dispenser;
 	}
 	
