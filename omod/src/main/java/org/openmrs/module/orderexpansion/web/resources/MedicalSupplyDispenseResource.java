@@ -82,7 +82,7 @@ public class MedicalSupplyDispenseResource extends DataDelegatingCrudResource<Me
 		description.addProperty("status");
 		description.addProperty("statusReason");
 		description.addProperty("location");
-		description.addProperty("encounters");
+		description.addProperty("encounter");
 		description.addProperty("dispenser");
 		return description;
 	}
@@ -101,7 +101,7 @@ public class MedicalSupplyDispenseResource extends DataDelegatingCrudResource<Me
 			description.addProperty("status");
 			description.addProperty("statusReason", Representation.REF);
 			description.addProperty("location", Representation.REF);
-			description.addProperty("encounters", Representation.REF);
+			description.addProperty("encounter", Representation.REF);
 			description.addProperty("dispenser", Representation.REF);
 		} else if (representation instanceof DefaultRepresentation) {
 			description.addProperty("uuid");
@@ -114,7 +114,7 @@ public class MedicalSupplyDispenseResource extends DataDelegatingCrudResource<Me
 			description.addProperty("status");
 			description.addProperty("statusReason", Representation.DEFAULT);
 			description.addProperty("location", Representation.DEFAULT);
-			description.addProperty("encounters", Representation.DEFAULT);
+			description.addProperty("encounter", Representation.DEFAULT);
 			description.addProperty("dispenser", Representation.DEFAULT);
 		} else if (representation instanceof FullRepresentation) {
 			description.addProperty("uuid");
@@ -127,7 +127,7 @@ public class MedicalSupplyDispenseResource extends DataDelegatingCrudResource<Me
 			description.addProperty("status");
 			description.addProperty("statusReason", Representation.FULL);
 			description.addProperty("location", Representation.REF);
-			description.addProperty("encounters", Representation.REF);
+			description.addProperty("encounter", Representation.REF);
 			description.addProperty("dispenser", Representation.FULL);
 		} else if (representation instanceof CustomRepresentation) { // custom rep
 			description = null;
