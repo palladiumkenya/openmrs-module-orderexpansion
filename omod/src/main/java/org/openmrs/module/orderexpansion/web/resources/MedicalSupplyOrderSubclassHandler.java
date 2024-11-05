@@ -2,7 +2,7 @@ package org.openmrs.module.orderexpansion.web.resources;
 
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
-import io.swagger.models.properties.IntegerProperty;
+import io.swagger.models.properties.DoubleProperty;
 import io.swagger.models.properties.StringProperty;
 import org.openmrs.Order;
 import org.openmrs.api.context.Context;
@@ -96,7 +96,7 @@ public class MedicalSupplyOrderSubclassHandler extends BaseDelegatingSubclassHan
 		OrderResource2_3 orderResource = (OrderResource2_3) Context.getService(RestService.class)
 		        .getResourceBySupportedClass(Order.class);
 		ModelImpl orderModel = (ModelImpl) orderResource.getGETModel(rep);
-		orderModel.property("medicalSuppliesInventoryId", new StringProperty()).property("quantity", new IntegerProperty())
+		orderModel.property("medicalSuppliesInventoryId", new StringProperty()).property("quantity", new DoubleProperty())
 		        .property("brandName", new StringProperty()).property("quantityUnits", new StringProperty());
 		
 		return orderModel;
@@ -109,7 +109,7 @@ public class MedicalSupplyOrderSubclassHandler extends BaseDelegatingSubclassHan
 		ModelImpl orderModel = (ModelImpl) orderResource.getCREATEModel(rep);
 		return orderModel.property("medicalSuppliesInventoryId", new StringProperty().example("uuid"))
 		        .property("quantityUnits", new StringProperty()).property("brandName", new StringProperty())
-		        .property("quantity", new IntegerProperty());
+		        .property("quantity", new DoubleProperty());
 	}
 	
 }

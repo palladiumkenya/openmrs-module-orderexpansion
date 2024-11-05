@@ -7,7 +7,7 @@ public class MedicalSupplyOrder extends ServiceOrder {
 	
 	public static final long serialVersionUID = 1L;
 	
-	private Integer quantity;
+	private Double quantity;
 	
 	private String brandName;
 	
@@ -51,11 +51,11 @@ public class MedicalSupplyOrder extends ServiceOrder {
 		return newOrder;
 	}
 	
-	public Integer getQuantity() {
+	public Double getQuantity() {
 		return quantity;
 	}
 	
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
 	
