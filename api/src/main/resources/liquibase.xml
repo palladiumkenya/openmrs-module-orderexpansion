@@ -166,6 +166,20 @@
                                  referencedTableName="concept" referencedColumnNames="concept_id"/>
     
     </changeSet>
+
+    <changeSet id="${project.parent.artifactId}-20241105-change-quantity-column-type" author="corneliouzbett">
+        <preConditions>
+            <and>
+                <tableExists tableName="medical_supplies_order"/>
+                <columnExists tableName="medical_supplies_order" columnName="quantity"/>
+            </and>
+        </preConditions>
+        <comment>Change quantity column type to double</comment>
+        <update tableName="medical_supplies_order">
+            <column name="quantity" type="double"/>
+        </update>
+    </changeSet>
+
     <changeSet id="${project.parent.artifactId}-202410090917" author="makombe">
         <preConditions onFail="MARK_RAN">
             <not>
