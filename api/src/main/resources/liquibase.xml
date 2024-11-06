@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
-                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
+    	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog 
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="${project.parent.artifactId}-202403101900" author="jecihjoy">
         <preConditions onFail="MARK_RAN">
@@ -175,9 +178,7 @@
             </and>
         </preConditions>
         <comment>Change quantity column type to double</comment>
-        <update tableName="medical_supplies_order">
-            <column name="quantity" type="double"/>
-        </update>
+        <modifyDataType tableName="medical_supplies_order" columnName="quantity" newDataType="double"/>
     </changeSet>
 
     <changeSet id="${project.parent.artifactId}-202410090917" author="makombe">
@@ -221,6 +222,16 @@
             <column name="date_voided" type="datetime"/>
             <column name="void_reason" type="varchar(255)"/>
         </createTable>
+    </changeSet>
+    <changeSet id="${project.parent.artifactId}-20241106-change-quantity-column-type-dispense" author="makombe">
+        <preConditions>
+            <and>
+                <tableExists tableName="medical_supply_dispense"/>
+                <columnExists tableName="medical_supply_dispense" columnName="quantity"/>
+            </and>
+        </preConditions>
+        <comment>Change quantity column type to double for dispense</comment>
+        <modifyDataType tableName="medical_supply_dispense" columnName="quantity" newDataType="double"/>
     </changeSet>
     
 
