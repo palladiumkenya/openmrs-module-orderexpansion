@@ -65,7 +65,7 @@ public class MedicalSupplyDispense extends BaseFormRecordableOpenmrsData {
 	private User dispenser;
 	
 	@Column(name = "quantity")
-	private Integer quantity;
+	private Double quantity;
 	
 	@ManyToOne
 	@JoinColumn(name = "quantity_units")
@@ -154,11 +154,11 @@ public class MedicalSupplyDispense extends BaseFormRecordableOpenmrsData {
 		this.statusReason = statusReason;
 	}
 	
-	public Integer getQuantity() {
+	public Double getQuantity() {
 		return this.quantity;
 	}
 	
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
 	
