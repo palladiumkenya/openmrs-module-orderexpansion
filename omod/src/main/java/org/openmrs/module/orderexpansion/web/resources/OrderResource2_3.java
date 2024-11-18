@@ -13,7 +13,7 @@ import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.v1_0.resource.openmrs2_2.OrderResource2_2;
 
-@Resource(name = RestConstants.VERSION_1 + "/order", supportedClass = Order.class, supportedOpenmrsVersions = {
+@Resource(name = RestConstants.VERSION_1 + "/order", supportedClass = Order.class, order = 10, supportedOpenmrsVersions = {
         "2.6.* - 9.*" })
 public class OrderResource2_3 extends OrderResource2_2 {
 	
