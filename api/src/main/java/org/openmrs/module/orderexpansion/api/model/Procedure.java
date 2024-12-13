@@ -33,7 +33,8 @@ public class Procedure extends BaseFormRecordableOpenmrsData {
 		NOT_DONE,
 		ON_HOLD,
 		STOPPED,
-		COMPLETED
+		COMPLETED,
+		PENDING_REVIEW
 	}
 	
 	public enum ProcedureOutcome {
