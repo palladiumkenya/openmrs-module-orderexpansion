@@ -22,6 +22,8 @@ public class ProcedureOrder extends ServiceOrder {
 	
 	public Concept bodySite;
 	
+	public Concept category;
+	
 	private ProcedureOrder relatedProcedure;
 	
 	private Set<Procedure> procedures;
@@ -92,5 +94,13 @@ public class ProcedureOrder extends ServiceOrder {
 	
 	public void setRelatedProcedure(ProcedureOrder relatedProcedure) {
 		this.relatedProcedure = relatedProcedure;
+	}
+	
+	public Concept getCategory() {
+		return category;
+	}
+	
+	public void setCategory(Concept category) {
+		this.category = category;
 	}
 }

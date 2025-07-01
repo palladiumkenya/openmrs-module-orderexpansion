@@ -22,6 +22,8 @@
         <property name="numberOfRepeats" type="int" column="number_of_repeats"/>
         <many-to-one name="frequency" class="org.openmrs.OrderFrequency" />
         <many-to-one name="location" class="org.openmrs.Concept" />
+        <many-to-one name="category" class="org.openmrs.Concept" column="category" />
+
 
         <many-to-one name="relatedProcedure" class="org.openmrs.module.orderexpansion.api.model.ProcedureOrder"  column="related_procedure_id"/>
         <set name="procedures" table="procedures" inverse="true" cascade="all">

@@ -83,6 +83,7 @@ public class ProcedureOrderSubclassHandler extends BaseDelegatingSubclassHandler
 			d.addProperty("bodySite", Representation.REF);
 			d.addProperty("relatedProcedure", Representation.REF);
 			d.addProperty("procedures", Representation.REF);
+			d.addProperty("category", Representation.REF);
 			return d;
 		} else if (rep instanceof FullRepresentation) {
 			OrderResource2_3 orderResource = (OrderResource2_3) Context.getService(RestService.class)
@@ -97,6 +98,7 @@ public class ProcedureOrderSubclassHandler extends BaseDelegatingSubclassHandler
 			d.addProperty("bodySite", Representation.FULL);
 			d.addProperty("relatedProcedure", Representation.FULL);
 			d.addProperty("procedures", Representation.FULL);
+			d.addProperty("category", Representation.FULL);
 			return d;
 		} else if (rep instanceof CustomRepresentation) { // custom rep
 			return null;
@@ -131,6 +133,7 @@ public class ProcedureOrderSubclassHandler extends BaseDelegatingSubclassHandler
 		d.addProperty("commentToFulfiller");
 		d.addProperty("scheduledDate");
 		d.addProperty("relatedProcedure");
+		d.addProperty("category");
 		return d;
 	}
 	
@@ -140,14 +143,17 @@ public class ProcedureOrderSubclassHandler extends BaseDelegatingSubclassHandler
 		        .getResourceBySupportedClass(Order.class);
 		ModelImpl orderModel = (ModelImpl) orderResource.getGETModel(rep);
 		orderModel.property("laterality", new EnumProperty(ProcedureOrder.Laterality.class))
-		        .property("clinicalHistory", new StringProperty()).property("numberOfRepeats", new IntegerProperty());
+		        .property("clinicalHistory", new StringProperty()).property("numberOfRepeats", new IntegerProperty())
+		        .property("category", new IntegerProperty());
 		
 		if (rep instanceof DefaultRepresentation) {
-			orderModel.property("specimenSource", new RefProperty("#/definitions/ConceptGetRef")).property("frequency",
-			    new RefProperty("#/definitions/OrderfrequencyGetRef"));
+			orderModel.property("specimenSource", new RefProperty("#/definitions/ConceptGetRef"))
+			        .property("frequency", new RefProperty("#/definitions/OrderfrequencyGetRef"))
+			        .property("category", new RefProperty("#/definitions/ConceptGetRef"));
 		} else if (rep instanceof FullRepresentation) {
-			orderModel.property("specimenSource", new RefProperty("#/definitions/ConceptGet")).property("frequency",
-			    new RefProperty("#/definitions/OrderfrequencyGet"));
+			orderModel.property("specimenSource", new RefProperty("#/definitions/ConceptGet"))
+			        .property("frequency", new RefProperty("#/definitions/OrderfrequencyGet"))
+			        .property("category", new RefProperty("#/definitions/ConceptGetRef"));
 		}
 		return orderModel;
 	}
@@ -161,7 +167,7 @@ public class ProcedureOrderSubclassHandler extends BaseDelegatingSubclassHandler
 		        .property("laterality", new EnumProperty(ProcedureOrder.Laterality.class))
 		        .property("clinicalHistory", new StringProperty())
 		        .property("frequency", new StringProperty().example("uuid"))
-		        .property("numberOfRepeats", new IntegerProperty());
+		        .property("numberOfRepeats", new IntegerProperty()).property("category", new IntegerProperty());
 	}
 	
 }
