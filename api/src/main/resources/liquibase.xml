@@ -234,5 +234,21 @@
         <modifyDataType tableName="medical_supply_dispense" columnName="quantity" newDataType="double"/>
     </changeSet>
 
+    <changeSet id="${project.parent.artifactId}-20250701-add-column-category" author="makombe">
+        <preConditions>
+            <not>
+               <columnExists columnName="category" tableName="procedure_order"/>
+            </not>
+        </preConditions>
+        <comment>
+         adding column category on table procedure_order
+        </comment>
+        <addColumn tableName="procedure_order">
+        <column  name="category" type="int">
+            <constraints nullable="true" />
+        </column>
+        </addColumn>
+    </changeSet>
+
 
 </databaseChangeLog>
