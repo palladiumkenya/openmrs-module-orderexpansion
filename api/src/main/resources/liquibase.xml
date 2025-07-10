@@ -224,7 +224,7 @@
         </createTable>
     </changeSet>
     <changeSet id="${project.parent.artifactId}-20241106-change-quantity-column-type-dispense" author="makombe">
-        <preConditions>
+        <preConditions onError="WARN" onFail="MARK_RAN">
             <and>
                 <tableExists tableName="medical_supply_dispense"/>
                 <columnExists tableName="medical_supply_dispense" columnName="quantity"/>
@@ -235,7 +235,8 @@
     </changeSet>
 
     <changeSet id="${project.parent.artifactId}-20250701-add-column-category" author="makombe">
-        <preConditions>
+        <preConditions onError="WARN" onFail="MARK_RAN">
+            <tableExists tableName="procedure_order"/>
             <not>
                <columnExists columnName="category" tableName="procedure_order"/>
             </not>
