@@ -251,5 +251,22 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="${project.parent.artifactId}-20250101-add-impressions-column" author="Donald Kibet">
+        <preConditions onError="WARN" onFail="MARK_RAN">
+            <tableExists tableName="procedures"/>
+            <not>
+               <columnExists columnName="impressions" tableName="procedures"/>
+            </not>
+        </preConditions>
+        <comment>
+         adding impressions column to procedures table for capturing procedure impressions
+        </comment>
+        <addColumn tableName="procedures">
+        <column name="impressions" type="text">
+            <constraints nullable="true" />
+        </column>
+        </addColumn>
+    </changeSet>
+
 
 </databaseChangeLog>
