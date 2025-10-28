@@ -98,6 +98,10 @@ public class Procedure extends BaseFormRecordableOpenmrsData {
 	@Lob
 	private String procedureReport;
 	
+	@Column(name = "impressions")
+	@Lob
+	private String impressions;
+	
 	@ManyToOne
 	@JoinColumn(name = "modality")
 	public Concept modality;
@@ -244,6 +248,14 @@ public class Procedure extends BaseFormRecordableOpenmrsData {
 	
 	public void setEncounters(List<Encounter> encounters) {
 		this.encounters = encounters;
+	}
+	
+	public String getImpressions() {
+		return impressions;
+	}
+	
+	public void setImpressions(String impressions) {
+		this.impressions = impressions;
 	}
 	
 	@Override

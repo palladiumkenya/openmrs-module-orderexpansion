@@ -93,6 +93,7 @@ public class ProcedureResource extends DataDelegatingCrudResource<Procedure> {
 		description.addProperty("participants");
 		description.addProperty("procedureResults");
 		description.addProperty("procedureReport");
+		description.addProperty("impressions");
 		return description;
 	}
 	
@@ -114,6 +115,7 @@ public class ProcedureResource extends DataDelegatingCrudResource<Procedure> {
 			description.addProperty("statusReason", Representation.REF);
 			description.addProperty("outcome");
 			description.addProperty("procedureReport");
+			description.addProperty("impressions");
 			description.addProperty("location", Representation.REF);
 			description.addProperty("encounters", Representation.REF);
 		} else if (representation instanceof DefaultRepresentation) {
@@ -131,6 +133,7 @@ public class ProcedureResource extends DataDelegatingCrudResource<Procedure> {
 			description.addProperty("statusReason", Representation.DEFAULT);
 			description.addProperty("outcome");
 			description.addProperty("procedureReport");
+			description.addProperty("impressions");
 			description.addProperty("location", Representation.DEFAULT);
 			description.addProperty("encounters", Representation.DEFAULT);
 		} else if (representation instanceof FullRepresentation) {
@@ -148,6 +151,7 @@ public class ProcedureResource extends DataDelegatingCrudResource<Procedure> {
 			description.addProperty("statusReason", Representation.FULL);
 			description.addProperty("outcome");
 			description.addProperty("procedureReport");
+			description.addProperty("impressions");
 			description.addProperty("location", Representation.REF);
 			description.addProperty("encounters", Representation.REF);
 		} else if (representation instanceof CustomRepresentation) { // custom rep
